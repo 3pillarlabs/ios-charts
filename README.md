@@ -79,4 +79,4 @@ iOSCharts is released under MIT license. See [LICENSE](LICENSE) for details.
 
 ![3Pillar Global] (http://www.3pillarglobal.com/wp-content/themes/base/library/images/logo_3pg.png)
 
-**PDFExporter** is developed and maintained by [3Pillar Global](http://www.3pillarglobal.com/).
+**iOSCharts** is developed and maintained by [3Pillar Global](http://www.3pillarglobal.com/).
