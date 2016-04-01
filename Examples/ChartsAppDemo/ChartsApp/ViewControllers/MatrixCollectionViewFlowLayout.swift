@@ -68,6 +68,7 @@ class MatrixCollectionViewFlowLayout: UICollectionViewLayout {
             return attributes
         default:
             assert(false, "Unexpected element kind")
+            return nil
         }
     }
 }
