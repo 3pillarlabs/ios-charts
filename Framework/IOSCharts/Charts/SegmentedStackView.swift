@@ -168,7 +168,7 @@ public class SegmentedStackView: UIView, GraphInputTableDelegate {
         
         var index = -1
         columnLayer.values = points.map({
-            index++
+            index += 1
             return SegmentedColumnInfo(value: $0, color: (inputTable?.rows[index].tintColor)!)
         })
     }

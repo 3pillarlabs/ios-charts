@@ -27,8 +27,8 @@ class MatrixCollectionViewFlowLayout: UICollectionViewLayout {
         let maxSection = Int(min(CGFloat(inputTable.rows.count - 1), ceil(rect.maxY / cellSize.height)))
         
         var attributes:[UICollectionViewLayoutAttributes] = []
-        for var section = minSection ; section <= maxSection ; section++ {
-            for var row = minRow ; row <= maxRow ; row++ {
+        for section in minSection...maxSection {
+            for row in minRow...maxRow {
                 if let attribute = layoutAttributesForItemAtIndexPath(NSIndexPath(forRow: row, inSection: section)) {
                     attributes.append(attribute)
                 }

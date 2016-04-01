@@ -25,7 +25,7 @@ class MenuViewController: UIViewController {
         collectionView.collectionViewLayout = collectionLayout
         
         title = "Graphs"
-        let addColumnButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "addColumn")
+        let addColumnButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: #selector(MenuViewController.addColumn))
         navigationItem.leftBarButtonItem = addColumnButton
         
         collectionView.registerClass(CustomCollectionViewCell.self, forCellWithReuseIdentifier: MenuViewController.cellId)
