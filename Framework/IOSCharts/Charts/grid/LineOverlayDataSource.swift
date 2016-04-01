@@ -13,14 +13,15 @@ class LineOverlayDataSource: NSObject,OverlayDataSource {
     
     func gridProperties(bounds: CGRect) -> [ValueProperties] {
         var propertiesArray: [ValueProperties] = []
-        for(var index = 0; index < inputTable?.rows.count; index++){
+        let numberOfRows: Int = inputTable?.rows.count ?? 0
+        for index in 0..<numberOfRows {
             guard let points = inputTable?[index].values else {
                 break
             }
-            let count = CGFloat(points.count)
-            let stepWidth = CGRectGetWidth(bounds) / (count - 1)
-            for var i = CGFloat(1) ; i < count ; i++ {
-                let startPoint = CGPoint(x: stepWidth * i, y: (1 - CGFloat(points[Int(i)])) * CGRectGetHeight(bounds))
+            let count = points.count
+            let stepWidth = CGRectGetWidth(bounds) / (CGFloat(count) - 1)
+            for i in 1  ..< count  {
+                let startPoint = CGPoint(x: stepWidth * CGFloat(i), y: (1 - CGFloat(points[Int(i)])) * CGRectGetHeight(bounds))
                 var property = ValueProperties()
                 property.startPoint = startPoint
                 let row = inputTable?.rows[index]

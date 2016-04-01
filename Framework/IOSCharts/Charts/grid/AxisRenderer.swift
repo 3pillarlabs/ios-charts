@@ -74,7 +74,7 @@ class AxisRenderer: NSObject {
         
         let step: CGFloat = (CGRectGetHeight(frame) - properties.axisInset.bottom) / CGFloat(properties.gridLines + 1)
         let value = (max - min) / Double(properties.gridLines + 1)
-        for(var i = 1; i <= properties.gridLines; i++) {
+        for i in 1...properties.gridLines {
             let y = step * CGFloat(i)
             let textFrame = CGRectMake(0, y, properties.axisInset.left - 5, 15)
             let labelValue = min + (value * Double(properties.gridLines + 1 - i))

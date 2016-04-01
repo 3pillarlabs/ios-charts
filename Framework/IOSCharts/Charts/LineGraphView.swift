@@ -183,7 +183,7 @@ public class LineGraphView: UIView,GraphInputTableDelegate {
         let lineLayer = lineLayers[index]
         let backLayer = backLayers[index]
         
-        let count = CGFloat(points.count)
+        let count = points.count
         if count < 2 {
             lineLayer.path = nil
             backLayer.path = nil
@@ -191,13 +191,13 @@ public class LineGraphView: UIView,GraphInputTableDelegate {
         }
         
         let bezierPath = UIBezierPath()
-        let stepWidth = CGRectGetWidth(lineLayer.frame) / (count - 1)
+        let stepWidth = CGRectGetWidth(lineLayer.frame) / (CGFloat(count) - 1)
         let startPoint = CGPoint(x: 0, y: (1 - points[Int(0)]) * CGRectGetHeight(lineLayer.frame))
         bezierPath.moveToPoint(startPoint)
         
-        for var i = CGFloat(0) ; i < count - 1 ; i++ {
-            let startPoint = CGPoint(x: stepWidth * i, y: (1 - points[Int(i)]) * CGRectGetHeight(lineLayer.frame))
-            let endPoint = CGPoint(x: stepWidth * (i + 1), y: (1 - points[Int(i+1)]) * CGRectGetHeight(lineLayer.frame))
+        for i in 0..<count - 1 {
+            let startPoint = CGPoint(x: stepWidth * CGFloat(i), y: (1 - points[Int(i)]) * CGRectGetHeight(lineLayer.frame))
+            let endPoint = CGPoint(x: stepWidth * (CGFloat(i) + 1), y: (1 - points[Int(i+1)]) * CGRectGetHeight(lineLayer.frame))
             let controlPoint1 = CGPoint(x: startPoint.x + stepWidth * controldistanceFactor, y: startPoint.y)
             let controlPoint2 = CGPoint(x: endPoint.x - stepWidth * controldistanceFactor, y: endPoint.y)
             bezierPath.addCurveToPoint(endPoint, controlPoint1: controlPoint1, controlPoint2: controlPoint2)
