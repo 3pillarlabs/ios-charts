@@ -24,10 +24,10 @@
 		B59D86D21C9C451500060266 /* Fabric.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B59D86CF1C9C451500060266 /* Fabric.framework */; };
 		B5A2211F1C9AC36D007BF60A /* CustomCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5A2211D1C9AC36D007BF60A /* CustomCollectionViewCell.swift */; };
 		B5A221201C9AC36D007BF60A /* CustomCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5A2211E1C9AC36D007BF60A /* CustomCollectionViewCell.xib */; };
+		C600BCE11CF73F66002F75A6 /* IOSCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C600BCE01CF73F66002F75A6 /* IOSCharts.framework */; };
+		C600BCE21CF73F66002F75A6 /* IOSCharts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C600BCE01CF73F66002F75A6 /* IOSCharts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C941D0D11C806F31003D2EE8 /* SegmentedStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C941D0CF1C806F31003D2EE8 /* SegmentedStackViewController.swift */; };
 		C941D0D21C806F31003D2EE8 /* SegmentedStackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C941D0D01C806F31003D2EE8 /* SegmentedStackViewController.xib */; };
-		C95CC8851CAEB0FC00692C50 /* IOSCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C95CC8841CAEB0FC00692C50 /* IOSCharts.framework */; };
-		C95CC8861CAEB0FC00692C50 /* IOSCharts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C95CC8841CAEB0FC00692C50 /* IOSCharts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,7 +37,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C95CC8861CAEB0FC00692C50 /* IOSCharts.framework in Embed Frameworks */,
+				C600BCE21CF73F66002F75A6 /* IOSCharts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -64,9 +64,9 @@
 		B59D86CF1C9C451500060266 /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = SOURCE_ROOT; };
 		B5A2211D1C9AC36D007BF60A /* CustomCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomCollectionViewCell.swift; sourceTree = "<group>"; };
 		B5A2211E1C9AC36D007BF60A /* CustomCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCollectionViewCell.xib; sourceTree = "<group>"; };
+		C600BCE01CF73F66002F75A6 /* IOSCharts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOSCharts.framework; path = ../IOSCharts.framework; sourceTree = "<group>"; };
 		C941D0CF1C806F31003D2EE8 /* SegmentedStackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedStackViewController.swift; sourceTree = "<group>"; };
 		C941D0D01C806F31003D2EE8 /* SegmentedStackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SegmentedStackViewController.xib; sourceTree = "<group>"; };
-		C95CC8841CAEB0FC00692C50 /* IOSCharts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOSCharts.framework; path = ../IOSCharts.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +76,7 @@
 			files = (
 				B59D86D11C9C451500060266 /* Crashlytics.framework in Frameworks */,
 				B59D86D21C9C451500060266 /* Fabric.framework in Frameworks */,
-				C95CC8851CAEB0FC00692C50 /* IOSCharts.framework in Frameworks */,
+				C600BCE11CF73F66002F75A6 /* IOSCharts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -133,7 +133,7 @@
 		B59285661C9985AF006A2408 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C95CC8841CAEB0FC00692C50 /* IOSCharts.framework */,
+				C600BCE01CF73F66002F75A6 /* IOSCharts.framework */,
 				B59D86CE1C9C451500060266 /* Crashlytics.framework */,
 				B59D86CF1C9C451500060266 /* Fabric.framework */,
 			);
