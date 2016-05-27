@@ -18,6 +18,8 @@
 		86CC59321C9B01F9000D8D4C /* MatrixCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CC59311C9B01F9000D8D4C /* MatrixCollectionViewFlowLayout.swift */; };
 		B55319EA1C7B636600A72D2C /* PieChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55319E91C7B636600A72D2C /* PieChartViewController.swift */; };
 		B55319EC1C7B637800A72D2C /* PieChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55319EB1C7B637800A72D2C /* PieChartViewController.xib */; };
+		B56B00521CF83CE80090FD2C /* IOSCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B56B00511CF83CE80090FD2C /* IOSCharts.framework */; };
+		B56B00531CF83CE80090FD2C /* IOSCharts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B56B00511CF83CE80090FD2C /* IOSCharts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B59D86441C9C05A600060266 /* CustomReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59D86421C9C05A600060266 /* CustomReusableView.swift */; };
 		B59D86451C9C05A600060266 /* CustomReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B59D86431C9C05A600060266 /* CustomReusableView.xib */; };
 		B59D86D11C9C451500060266 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B59D86CE1C9C451500060266 /* Crashlytics.framework */; };
@@ -26,18 +28,16 @@
 		B5A221201C9AC36D007BF60A /* CustomCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5A2211E1C9AC36D007BF60A /* CustomCollectionViewCell.xib */; };
 		C941D0D11C806F31003D2EE8 /* SegmentedStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C941D0CF1C806F31003D2EE8 /* SegmentedStackViewController.swift */; };
 		C941D0D21C806F31003D2EE8 /* SegmentedStackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C941D0D01C806F31003D2EE8 /* SegmentedStackViewController.xib */; };
-		C95CC8851CAEB0FC00692C50 /* IOSCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C95CC8841CAEB0FC00692C50 /* IOSCharts.framework */; };
-		C95CC8861CAEB0FC00692C50 /* IOSCharts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C95CC8841CAEB0FC00692C50 /* IOSCharts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		B59D87001C9C541800060266 /* Embed Frameworks */ = {
+		B56B00541CF83CE90090FD2C /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C95CC8861CAEB0FC00692C50 /* IOSCharts.framework in Embed Frameworks */,
+				B56B00531CF83CE80090FD2C /* IOSCharts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -58,6 +58,7 @@
 		86CC59311C9B01F9000D8D4C /* MatrixCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatrixCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		B55319E91C7B636600A72D2C /* PieChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartViewController.swift; sourceTree = "<group>"; };
 		B55319EB1C7B637800A72D2C /* PieChartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PieChartViewController.xib; sourceTree = "<group>"; };
+		B56B00511CF83CE80090FD2C /* IOSCharts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IOSCharts.framework; sourceTree = "<group>"; };
 		B59D86421C9C05A600060266 /* CustomReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomReusableView.swift; sourceTree = "<group>"; };
 		B59D86431C9C05A600060266 /* CustomReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomReusableView.xib; sourceTree = "<group>"; };
 		B59D86CE1C9C451500060266 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
@@ -66,7 +67,6 @@
 		B5A2211E1C9AC36D007BF60A /* CustomCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCollectionViewCell.xib; sourceTree = "<group>"; };
 		C941D0CF1C806F31003D2EE8 /* SegmentedStackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedStackViewController.swift; sourceTree = "<group>"; };
 		C941D0D01C806F31003D2EE8 /* SegmentedStackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SegmentedStackViewController.xib; sourceTree = "<group>"; };
-		C95CC8841CAEB0FC00692C50 /* IOSCharts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOSCharts.framework; path = ../IOSCharts.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +76,7 @@
 			files = (
 				B59D86D11C9C451500060266 /* Crashlytics.framework in Frameworks */,
 				B59D86D21C9C451500060266 /* Fabric.framework in Frameworks */,
-				C95CC8851CAEB0FC00692C50 /* IOSCharts.framework in Frameworks */,
+				B56B00521CF83CE80090FD2C /* IOSCharts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +86,7 @@
 		86CC32C81C6B7C3C00503648 = {
 			isa = PBXGroup;
 			children = (
+				B56B00511CF83CE80090FD2C /* IOSCharts.framework */,
 				86CC32D31C6B7C3C00503648 /* ChartsApp */,
 				B59285661C9985AF006A2408 /* Frameworks */,
 				86CC32D21C6B7C3C00503648 /* Products */,
@@ -133,7 +134,6 @@
 		B59285661C9985AF006A2408 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C95CC8841CAEB0FC00692C50 /* IOSCharts.framework */,
 				B59D86CE1C9C451500060266 /* Crashlytics.framework */,
 				B59D86CF1C9C451500060266 /* Fabric.framework */,
 			);
@@ -163,7 +163,7 @@
 				86CC32CE1C6B7C3C00503648 /* Frameworks */,
 				86CC32CF1C6B7C3C00503648 /* Resources */,
 				86C4FBB81C806BC4003BF63D /* Run Script */,
-				B59D87001C9C541800060266 /* Embed Frameworks */,
+				B56B00541CF83CE90090FD2C /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
