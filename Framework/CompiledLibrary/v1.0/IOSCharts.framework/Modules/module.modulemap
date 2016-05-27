@@ -1,0 +1,10 @@
+framework module IOSCharts {
+  umbrella header "IOSCharts.h"
+
+  export *
+  module * { export * }
+}
+
+module IOSCharts.Swift {
+    header "IOSCharts-Swift.h"
+}
