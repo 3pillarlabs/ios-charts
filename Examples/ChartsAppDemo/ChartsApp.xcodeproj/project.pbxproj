@@ -18,8 +18,7 @@
 		86CC59321C9B01F9000D8D4C /* MatrixCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CC59311C9B01F9000D8D4C /* MatrixCollectionViewFlowLayout.swift */; };
 		B55319EA1C7B636600A72D2C /* PieChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55319E91C7B636600A72D2C /* PieChartViewController.swift */; };
 		B55319EC1C7B637800A72D2C /* PieChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55319EB1C7B637800A72D2C /* PieChartViewController.xib */; };
-		B56B00491CF834EC0090FD2C /* IOSCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B56B00481CF834EC0090FD2C /* IOSCharts.framework */; };
-		B56B004A1CF834EC0090FD2C /* IOSCharts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B56B00481CF834EC0090FD2C /* IOSCharts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B56B004B1CF83BD40090FD2C /* IOSCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B56B00481CF834EC0090FD2C /* IOSCharts.framework */; };
 		B59D86441C9C05A600060266 /* CustomReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59D86421C9C05A600060266 /* CustomReusableView.swift */; };
 		B59D86451C9C05A600060266 /* CustomReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B59D86431C9C05A600060266 /* CustomReusableView.xib */; };
 		B59D86D11C9C451500060266 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B59D86CE1C9C451500060266 /* Crashlytics.framework */; };
@@ -29,20 +28,6 @@
 		C941D0D11C806F31003D2EE8 /* SegmentedStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C941D0CF1C806F31003D2EE8 /* SegmentedStackViewController.swift */; };
 		C941D0D21C806F31003D2EE8 /* SegmentedStackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C941D0D01C806F31003D2EE8 /* SegmentedStackViewController.xib */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		B59D87001C9C541800060266 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				B56B004A1CF834EC0090FD2C /* IOSCharts.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		86CC32D11C6B7C3C00503648 /* ChartsApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChartsApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,9 +59,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B56B004B1CF83BD40090FD2C /* IOSCharts.framework in Frameworks */,
 				B59D86D11C9C451500060266 /* Crashlytics.framework in Frameworks */,
 				B59D86D21C9C451500060266 /* Fabric.framework in Frameworks */,
-				B56B00491CF834EC0090FD2C /* IOSCharts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,7 +148,6 @@
 				86CC32CE1C6B7C3C00503648 /* Frameworks */,
 				86CC32CF1C6B7C3C00503648 /* Resources */,
 				86C4FBB81C806BC4003BF63D /* Run Script */,
-				B59D87001C9C541800060266 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
