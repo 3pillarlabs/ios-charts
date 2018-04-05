@@ -13,14 +13,14 @@ class MatrixCollectionViewFlowLayout: UICollectionViewLayout {
     let inputTable: GraphInputTable = GraphInputTable(name: "The Matrix")
     
     var cellSize = CGSize(width: 50, height: 50)
-    private let padding:CGFloat = 2
+    fileprivate let padding:CGFloat = 2
     
-    override func collectionViewContentSize() -> CGSize {
+    override var collectionViewContentSize : CGSize {
         return CGSize(width: CGFloat(inputTable.columnNames.count) * (cellSize.width + padding) + cellSize.width,
             height: CGFloat(inputTable.rows.count) * (cellSize.height + padding) + cellSize.height)
     }
     
-    override func layoutAttributesForElementsInRect(rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         let minRow = Int(max(0, floor(rect.minX / cellSize.width)))
         let maxRow = Int(min(CGFloat(inputTable.columnNames.count - 1), ceil(rect.maxX / cellSize.width)))
         let minSection = Int(max(0, floor(rect.minY / cellSize.height)))
@@ -29,15 +29,15 @@ class MatrixCollectionViewFlowLayout: UICollectionViewLayout {
         var attributes:[UICollectionViewLayoutAttributes] = []
         for section in minSection...maxSection {
             for row in minRow...maxRow {
-                if let attribute = layoutAttributesForItemAtIndexPath(NSIndexPath(forRow: row, inSection: section)) {
+                if let attribute = layoutAttributesForItem(at: IndexPath(row: row, section: section)) {
                     attributes.append(attribute)
                 }
                 
-                if let attribute = layoutAttributesForSupplementaryViewOfKind(UICollectionElementKindSectionHeader, atIndexPath: NSIndexPath(forRow: row, inSection: section)) {
+                if let attribute = layoutAttributesForSupplementaryView(ofKind: UICollectionElementKindSectionHeader, at: IndexPath(row: row, section: section)) {
                     attributes.append(attribute)
                 }
                 if row == minRow {
-                    if let attribute = layoutAttributesForSupplementaryViewOfKind(UICollectionElementKindSectionFooter, atIndexPath: NSIndexPath(forRow: row, inSection: section)) {
+                    if let attribute = layoutAttributesForSupplementaryView(ofKind: UICollectionElementKindSectionFooter, at: IndexPath(row: row, section: section)) {
                         attributes.append(attribute)
                     }
                 }
@@ -48,22 +48,22 @@ class MatrixCollectionViewFlowLayout: UICollectionViewLayout {
         return attributes
     }
     
-    override func layoutAttributesForItemAtIndexPath(indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
-        let attributes = UICollectionViewLayoutAttributes(forCellWithIndexPath: indexPath)
+    override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
         attributes.frame = CGRect(x: cellSize.width + CGFloat(indexPath.row) * (cellSize.width + padding), y: CGFloat(indexPath.section) * (cellSize.height + padding) + cellSize.width, width: cellSize.width, height: cellSize.height)
         return attributes
     }
     
-    override func layoutAttributesForSupplementaryViewOfKind(elementKind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionViewLayoutAttributes? {
+    override func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         
         switch elementKind {
         case UICollectionElementKindSectionHeader:
-            let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: elementKind, withIndexPath: indexPath)
+            let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: elementKind, with: indexPath)
             attributes.frame = CGRect(x: 50 +  CGFloat(indexPath.row) * (cellSize.width + padding), y: 0, width: cellSize.width, height: cellSize.height)
             return attributes
             
         case UICollectionElementKindSectionFooter:
-            let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: elementKind, withIndexPath: indexPath)
+            let attributes = UICollectionViewLayoutAttributes(forSupplementaryViewOfKind: elementKind, with: indexPath)
             attributes.frame = CGRect(x: CGFloat(indexPath.row) * (cellSize.width + padding), y: CGFloat(indexPath.section) * (cellSize.height + padding) + cellSize.width, width: cellSize.width, height: cellSize.height)
             return attributes
         default:

@@ -11,7 +11,7 @@ import UIKit
 let kMinAnimationDuration = 0.15
 
 struct AxisProperties {
-    var lineColor: CGColorRef = UIColor.blackColor().CGColor
+    var lineColor: CGColor = UIColor.black.cgColor
     var lineWidth: CGFloat = 1
     var displayGrid: Bool = false
     var gridLines: Int = 5
@@ -36,32 +36,32 @@ class AxisRenderer: NSObject {
     func render(minValue: Double, maxValue: Double) {
         min = minValue
         max = maxValue
-        renderXAxis(layer.frame)
-        renderYAxis(layer.frame)
-        if properties.displayGrid { renderGrid(layer.frame) }
+        renderXAxis(frame: layer.frame)
+        renderYAxis(frame: layer.frame)
+        if properties.displayGrid { renderGrid(frame: layer.frame) }
     }
     
     //MARK: Private
     
     private func renderYAxis(frame: CGRect) {
-        yAxis.frame = CGRectMake(0, 0, 1, CGRectGetHeight(frame))
+        yAxis.frame = CGRect(x: 0, y: 0, width: 1, height: frame.height)
         let path = UIBezierPath()
-        path.moveToPoint(CGPoint(x: properties.axisInset.left, y: 0))
-        path.addLineToPoint(CGPoint(x: properties.axisInset.left, y: CGRectGetHeight(frame) - properties.axisInset.bottom))
-        path.closePath()
-        yAxis.path = path.CGPath
+        path.move(to: CGPoint(x: properties.axisInset.left, y: 0))
+        path.addLine(to: CGPoint(x: properties.axisInset.left, y: frame.height - properties.axisInset.bottom))
+        path.close()
+        yAxis.path = path.cgPath
         yAxis.lineWidth = 1
         yAxis.strokeColor = properties.lineColor
         layer.addSublayer(yAxis)
     }
     
     private func renderXAxis(frame: CGRect) {
-        xAxis.frame = CGRectMake(0, 0, CGRectGetWidth(frame), 1)
+        xAxis.frame = CGRect(x: 0, y: 0, width: frame.width, height: 1)
         let path = UIBezierPath()
-        path.moveToPoint(CGPoint(x: properties.axisInset.left, y: CGRectGetHeight(frame) - properties.axisInset.bottom))
-        path.addLineToPoint(CGPoint(x: CGRectGetWidth(frame), y: CGRectGetHeight(frame) - properties.axisInset.bottom))
-        path.closePath()
-        xAxis.path = path.CGPath
+        path.move(to: CGPoint(x: properties.axisInset.left, y: frame.height - properties.axisInset.bottom))
+        path.addLine(to: CGPoint(x: frame.width, y: frame.height - properties.axisInset.bottom))
+        path.close()
+        xAxis.path = path.cgPath
         xAxis.lineWidth = 1
         xAxis.strokeColor = properties.lineColor
         layer.addSublayer(xAxis)
@@ -70,20 +70,20 @@ class AxisRenderer: NSObject {
     private func renderGrid(frame: CGRect) {
         let maxAnimationDuration = kMinAnimationDuration * Double(properties.gridLines + 1)
         gridLayer.sublayers?.removeAll()
-        gridLayer.frame = CGRectMake(0, 0, CGRectGetWidth(frame), CGRectGetHeight(frame))
+        gridLayer.frame = CGRect(origin: CGPoint.zero, size: frame.size)
         
-        let step: CGFloat = (CGRectGetHeight(frame) - properties.axisInset.bottom) / CGFloat(properties.gridLines + 1)
+        let step: CGFloat = (frame.height - properties.axisInset.bottom) / CGFloat(properties.gridLines + 1)
         let value = (max - min) / Double(properties.gridLines + 1)
         for i in 1...properties.gridLines {
             let y = step * CGFloat(i)
-            let textFrame = CGRectMake(0, y, properties.axisInset.left - 5, 15)
+            let textFrame = CGRect(x: 0, y: y, width: properties.axisInset.left - 5, height: 15)
             let labelValue = min + (value * Double(properties.gridLines + 1 - i))
-            let textLayer = renderLabel(formatValue(labelValue))
+            let textLayer = renderLabel(string: formatValue(value: labelValue))
             textLayer.frame = textFrame
-            animate(textLayer, duration: maxAnimationDuration - kMinAnimationDuration * Double(i))
+            animate(layer: textLayer, duration: maxAnimationDuration - kMinAnimationDuration * Double(i))
             
-            let lineFrame = CGRectMake(0, y, CGRectGetWidth(frame), 1)
-            let lineLayer = renderLine(CGRectGetWidth(frame))
+            let lineFrame = CGRect(x: 0, y: y, width: frame.width, height: 1)
+            let lineLayer = renderLine(width: frame.width)
             lineLayer.frame = lineFrame
             
             gridLayer.addSublayer(textLayer)
@@ -95,22 +95,22 @@ class AxisRenderer: NSObject {
     
     private func renderLabel(string: String) -> CATextLayer {
         let textLayer = CATextLayer()
-        textLayer.contentsScale = UIScreen.mainScreen().scale
+        textLayer.contentsScale = UIScreen.main.scale
         textLayer.alignmentMode = kCAAlignmentRight
         textLayer.string = string
         textLayer.fontSize = 12
-        textLayer.foregroundColor = UIColor.blackColor().CGColor
+        textLayer.foregroundColor = UIColor.black.cgColor
         return textLayer
     }
     
     func renderLine(width: CGFloat) -> CAShapeLayer {
         let lineLayer = CAShapeLayer()
         let path = UIBezierPath()
-        path.moveToPoint(CGPoint(x: properties.axisInset.left, y: 0))
-        path.addLineToPoint(CGPoint(x: width, y: 0 ))
-        path.closePath()
-        lineLayer.path = path.CGPath
-        lineLayer.fillColor = UIColor.clearColor().CGColor
+        path.move(to: CGPoint(x: properties.axisInset.left, y: 0))
+        path.addLine(to: CGPoint(x: width, y: 0 ))
+        path.close()
+        lineLayer.path = path.cgPath
+        lineLayer.fillColor = UIColor.clear.cgColor
         lineLayer.strokeColor = properties.lineColor
         lineLayer.lineWidth = 0.2
         return lineLayer
@@ -126,6 +126,6 @@ class AxisRenderer: NSObject {
         animation.fromValue = -100.0
         animation.toValue = layer.frame.origin.x
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
-        layer.addAnimation(animation, forKey: "position.x")
+        layer.add(animation, forKey: "position.x")
     }
 }

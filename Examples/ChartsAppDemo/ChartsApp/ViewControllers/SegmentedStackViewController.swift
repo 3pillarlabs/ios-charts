@@ -13,7 +13,7 @@ class SegmentedStackViewController: UIViewController{
     @IBOutlet weak var segmentedStackView: SegmentedStackView!
     var inputTable:GraphInputTable?
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.title = "Segmented Stack Graph"
     }

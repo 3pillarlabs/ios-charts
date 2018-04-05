@@ -19,16 +19,16 @@ class LineOverlayDataSource: NSObject,OverlayDataSource {
                 break
             }
             let count = points.count
-            let stepWidth = CGRectGetWidth(bounds) / (CGFloat(count) - 1)
+            let stepWidth = bounds.width / (CGFloat(count) - 1)
             for i in 1  ..< count  {
-                let startPoint = CGPoint(x: stepWidth * CGFloat(i), y: (1 - CGFloat(points[Int(i)])) * CGRectGetHeight(bounds))
+                let startPoint = CGPoint(x: stepWidth * CGFloat(i), y: (1 - CGFloat(points[Int(i)])) * bounds.height)
                 var property = ValueProperties()
                 property.startPoint = startPoint
                 let row = inputTable?.rows[index]
                 let value = inputTable?.rows[index].values[Int(i)] ?? 0
                 property.text = "\(value)"
-                let color = row?.tintColor ?? UIColor.blackColor()
-                property.textAttributes = [NSForegroundColorAttributeName: color, NSFontAttributeName: UIFont.systemFontOfSize(8)]
+                let color = row?.tintColor ?? UIColor.black
+                property.textAttributes = [.foregroundColor: color, .font: UIFont.systemFont(ofSize: 8)]
                 property.pointColor = color
                 propertiesArray.append(property)
             }

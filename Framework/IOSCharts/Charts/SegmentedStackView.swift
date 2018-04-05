@@ -27,7 +27,7 @@ public class SegmentedStackView: UIView, GraphInputTableDelegate {
             if let inputTable = inputTable {
                 inputTable.delegate = self
                 gridDataSource.inputTable = inputTable
-                tableRowsDidChange(inputTable)
+                tableRowsDidChange(table: inputTable)
             } else {
                 removeLayers()
             }
@@ -59,43 +59,43 @@ public class SegmentedStackView: UIView, GraphInputTableDelegate {
         
         let numberOfBars = CGFloat(inputTable.columnNames.count)
         
-        arrangeHorizontally(numberOfBars, toFit: graphFrame)
+        arrangeHorizontally(numberOfBars: numberOfBars, toFit: graphFrame)
         backgroundLayer.frame = bounds
         graphContainerLayer.frame = bounds
         overlayLayer.frame = graphFrame
         addGradientToGraph()
-        updateGraphs(false)
-        renderer?.render( Double(0), maxValue: inputTable.maxTotalPerColumn ?? Double(0))
+        updateGraphs(animated: false)
+        renderer?.render( minValue: Double(0), maxValue: inputTable.maxTotalPerColumn )
     }
     
     // MARK: - GraphInputTableDelegate
     
     public func tableValuesDidChange(table: GraphInputTable) {
-        updateGraphs(true)
-        renderer?.render( Double(0), maxValue: inputTable!.maxTotalPerColumn ?? Double(0))
+        updateGraphs(animated: true)
+        renderer?.render( minValue: Double(0), maxValue: inputTable!.maxTotalPerColumn )
     }
     
     public func tableColumnsDidChange(table: GraphInputTable) {
         removeLayers()
         addLayers()
-        updateGraphs(true)
-        renderer?.render( Double(0), maxValue: inputTable!.maxTotalPerColumn ?? Double(0))
+        updateGraphs(animated: true)
+        renderer?.render( minValue: Double(0), maxValue: inputTable!.maxTotalPerColumn )
     }
     
     public func tableRowsDidChange(table: GraphInputTable) {
         addLayers()
-        updateGraphs(true)
+        updateGraphs(animated: true)
     }
     
     public func tableRowTintColorDidChange(table: GraphInputTable, rowIndex: Int) {
-        updateGraphs(false)
+        updateGraphs(animated: false)
     }
     
     // MARK: - Private methods
     
     private func addAxis() {
         var properties:AxisProperties = AxisProperties()
-        properties.lineColor = UIColor.orangeColor().CGColor
+        properties.lineColor = UIColor.orange.cgColor
         properties.lineWidth = 1
         properties.displayGrid = true
         properties.gridLines = 7
@@ -116,9 +116,9 @@ public class SegmentedStackView: UIView, GraphInputTableDelegate {
     
     private func arrangeHorizontally(numberOfBars:CGFloat, toFit graphFrame: CGRect) {
         var x: CGFloat = graphFrame.origin.x
-        let segmentWidth = (CGRectGetWidth(graphFrame) - kStackedBarChartPadding * (numberOfBars - 1) ) / numberOfBars
+        let segmentWidth = (graphFrame.width - kStackedBarChartPadding * (numberOfBars - 1) ) / numberOfBars
         for columnLayer in columnLayers {
-            columnLayer.frame = CGRect(x: x, y: 0, width: segmentWidth, height: CGRectGetHeight(graphFrame))
+            columnLayer.frame = CGRect(x: x, y: 0, width: segmentWidth, height: graphFrame.height)
             x += segmentWidth + kStackedBarChartPadding
         }
     }
@@ -126,8 +126,9 @@ public class SegmentedStackView: UIView, GraphInputTableDelegate {
     private func addGradientToGraph() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = graphContainerLayer.bounds
-        gradientLayer.colors = [UIColor.blackColor().CGColor,UIColor.blackColor().colorWithAlphaComponent(0.7).CGColor ,UIColor.clearColor().CGColor]
-        gradientLayer.locations = [0.0,0.9,1.0]
+        gradientLayer.colors = [UIColor.black.cgColor, UIColor.black.withAlphaComponent(0.7).cgColor,
+                                UIColor.clear.cgColor]
+        gradientLayer.locations = [0.0, 0.9, 1.0]
         graphContainerLayer.mask = gradientLayer
     }
     
@@ -154,13 +155,13 @@ public class SegmentedStackView: UIView, GraphInputTableDelegate {
     
     private func updateGraphs(animated: Bool) {
         overlayLayer.reloadData(animated: true)
-        for (index, _) in columnLayers.enumerate() {
-            updateGraph(index, animated: animated)
+        for (index, _) in columnLayers.enumerated() {
+            updateGraph(index: index, animated: animated)
         }
     }
     
     private func updateGraph(index: Int, animated: Bool) {
-        guard let points = inputTable?.normalizedValuesForColumn(index) else {
+        guard let points = inputTable?.normalizedValuesForColumn(index: index) else {
             return
         }
         

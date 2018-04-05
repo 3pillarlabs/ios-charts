@@ -13,6 +13,20 @@ It is available starting with IOS 8.0 and later and can be used with both Swift 
 
 Link your application against the framework. Add the framework to the list of 'Embedded Binaries' from the project's General tab.
 
+### Carthage
+
+- Update your Cartfile by adding:
+
+```
+github "3pillarlabs/ios-charts"
+```
+
+- Run carthage by using command:
+
+```
+carthage update
+```
+
 ## Usage
 
 Basic steps in using the framework:
@@ -77,6 +91,6 @@ iOSCharts is released under MIT license. See [LICENSE](LICENSE) for details.
 
 ## About this project
 
-![3Pillar Global] (http://www.3pillarglobal.com/wp-content/themes/base/library/images/logo_3pg.png)
+[![3Pillar Global](https://www.3pillarglobal.com/wp-content/themes/base/library/images/logo_3pg.png)](http://www.3pillarglobal.com/)
 
 **iOSCharts** is developed and maintained by [3Pillar Global](http://www.3pillarglobal.com/).

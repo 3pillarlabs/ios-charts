@@ -23,7 +23,7 @@ public class PieChartView: UIView, GraphInputTableDelegate {
             if let inputTable = inputTable {
                 inputTable.delegate = self
                 gridDataSource.inputTable = inputTable
-                tableRowsDidChange(inputTable)
+                tableRowsDidChange(table: inputTable)
             }
         }
     }
@@ -53,30 +53,31 @@ public class PieChartView: UIView, GraphInputTableDelegate {
         }
         columnSliceLayer.frame = contentLayer.bounds
         columnSliceLayer.lineWidth = lineWidth
-        rowSliceLayer.frame = CGRectInset(contentLayer.bounds, lineWidth + 1, lineWidth + 1)
+
+        rowSliceLayer.frame = contentLayer.bounds.insetBy(dx: lineWidth + 1, dy: lineWidth + 1)
         rowSliceLayer.lineWidth = lineWidth
         gridDataSource.lineWidth = lineWidth
         overlayLayer.frame = graphFrame
         
-        updateSlices(false)
+        updateSlices(animated: false)
     }
     
     // MARK: - GraphInputTableDelegate
     
     public func tableValuesDidChange(table: GraphInputTable) {
-        updateSlices(true)
+        updateSlices(animated: true)
     }
     
     public func tableColumnsDidChange(table: GraphInputTable) {
-        updateSlices(true)
+        updateSlices(animated: true)
     }
     
     public func tableRowsDidChange(table: GraphInputTable) {
-        updateSlices(true)
+        updateSlices(animated: true)
     }
     
     public func tableRowTintColorDidChange(table: GraphInputTable, rowIndex: Int) {
-        updateSlices(true)
+        updateSlices(animated: true)
     }
     
     // MARK: - Private methods
@@ -89,10 +90,10 @@ public class PieChartView: UIView, GraphInputTableDelegate {
         overlayLayer.reloadData(animated: true)
         var rowInfos: [PieArcInfo] = []
         var columnInfos: [PieArcInfo] = []
-        for (rowIndex, row) in inputTable.rows.enumerate() {
-            rowInfos.append(PieArcInfo(value: inputTable.percentOfRowAtIndex(rowIndex), color: row.tintColor))
-            for (columnIndex, _) in inputTable.columnNames.enumerate() {
-                columnInfos.append(PieArcInfo(value: inputTable.percentOfColumn(columnIndex, rowIndex: rowIndex), color: row.tintColor))
+        for (rowIndex, row) in inputTable.rows.enumerated() {
+            rowInfos.append(PieArcInfo(value: inputTable.percentOfRowAtIndex(index: rowIndex), color: row.tintColor))
+            for (columnIndex, _) in inputTable.columnNames.enumerated() {
+                columnInfos.append(PieArcInfo(value: inputTable.percentOfColumn(columnIndex: columnIndex, rowIndex: rowIndex), color: row.tintColor))
             }
         }
         rowSliceLayer.values = rowInfos
@@ -110,7 +111,7 @@ public class PieChartView: UIView, GraphInputTableDelegate {
         contentLayer.addSublayer(columnSliceLayer)
         
         let gradientLayer = RadialGradientLayer()
-        gradientLayer.colors = [UIColor.clearColor().CGColor, UIColor(white: 1, alpha: 0.6).CGColor, UIColor.whiteColor().CGColor]
+        gradientLayer.colors = [UIColor.clear.cgColor, UIColor(white: 1, alpha: 0.6).cgColor, UIColor.white.cgColor]
         gradientLayer.locations = [0, 0.5, 1]
         gradientLayer.frame = contentLayer.bounds
         contentLayer.mask = gradientLayer
@@ -123,10 +124,10 @@ public class PieChartView: UIView, GraphInputTableDelegate {
     }
     
     private func DegreesToRadians (value:Double) -> Double {
-        return value * M_PI / 180.0
+        return value * .pi / 180.0
     }
     
     private func minSize(rect: CGRect) -> CGFloat {
-        return CGFloat(fminf(Float(CGRectGetWidth(rect)), Float(CGRectGetHeight(rect))))
+        return CGFloat(fminf(Float(rect.width), Float(rect.height)))
     }
 }

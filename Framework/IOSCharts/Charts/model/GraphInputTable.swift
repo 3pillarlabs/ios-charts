@@ -18,7 +18,7 @@ public class GraphInputTable: NSObject, GraphInputRowDelegate {
     /// Array with all the column names
     public var columnNames: [String] = [] {
         didSet {
-            delegate?.tableColumnsDidChange(self)
+            delegate?.tableColumnsDidChange(table: self)
         }
     }
     
@@ -27,7 +27,7 @@ public class GraphInputTable: NSObject, GraphInputRowDelegate {
         didSet {
             computeMinMax()
             computeMaxTotalPerColumn()
-            delegate?.tableRowsDidChange(self)
+            delegate?.tableRowsDidChange(table: self)
         }
     }
     private(set) var min: Double = 0
@@ -80,7 +80,7 @@ public class GraphInputTable: NSObject, GraphInputRowDelegate {
         let delegate = self.delegate
         self.delegate = nil;
         
-        for (index, row) in rows.enumerate() {
+        for (index, row) in rows.enumerated() {
             row.values.append(rowValues[index])
         }
         
@@ -90,7 +90,7 @@ public class GraphInputTable: NSObject, GraphInputRowDelegate {
         computeMaxTotalPerColumn()
         
         self.delegate = delegate
-        delegate?.tableColumnsDidChange(self)
+        delegate?.tableColumnsDidChange(table: self)
     }
     /**
      Remove a column at the specified index
@@ -106,11 +106,11 @@ public class GraphInputTable: NSObject, GraphInputRowDelegate {
         let delegate = self.delegate
         self.delegate = nil
         
-        for (index, row) in rows.enumerate() {
-            row.values.removeAtIndex(index)
+        for (index, row) in rows.enumerated() {
+            row.values.remove(at: index)
         }
         
-        self.columnNames.removeAtIndex(index)
+        self.columnNames.remove(at: index)
         
         if (rows.count > 0) {
             computeMinMax()
@@ -121,7 +121,7 @@ public class GraphInputTable: NSObject, GraphInputRowDelegate {
             maxTotalPerColumn = 0
         }
         self.delegate = delegate
-        delegate?.tableColumnsDidChange(self)
+        delegate?.tableColumnsDidChange(table: self)
     }
     /**
      This will clean the entire data source
@@ -145,7 +145,7 @@ public class GraphInputTable: NSObject, GraphInputRowDelegate {
     // MARK: - private methods
     
     private func computeMinMax() {
-        var min: Double = DBL_MAX
+        var min: Double = .greatestFiniteMagnitude
         var max: Double = 0
         var total: Double = 0
         
@@ -155,14 +155,14 @@ public class GraphInputTable: NSObject, GraphInputRowDelegate {
             total += row.total
         }
         self.total = total
-        self.min = min != DBL_MAX ? min : 0
+        self.min = min != .greatestFiniteMagnitude ? min : 0
         self.max = max
     }
     
     private func computeMaxTotalPerColumn() {
         maxTotalPerColumn = 0
-        for (index, _) in columnNames.enumerate() {
-            maxTotalPerColumn = fmax(maxTotalPerColumn, rows.reduce(0, combine: {$0 + $1.values[index]}))
+        for (index, _) in columnNames.enumerated() {
+            maxTotalPerColumn = fmax(maxTotalPerColumn, rows.reduce(0, {$0 + $1.values[index]}))
         }
     }
     
@@ -178,7 +178,7 @@ public class GraphInputTable: NSObject, GraphInputRowDelegate {
     
     func normalizedValuesForColumn(index: Int) -> [CGFloat] {
         return (rows.map({
-            normalize($0.values[index])
+            normalize(value: $0.values[index])
         }))
     }
     
@@ -189,12 +189,12 @@ public class GraphInputTable: NSObject, GraphInputRowDelegate {
     // MARK: - GraphInputRowDelegate
     
     func rowValuesDidChange(row: GraphInputRow) {
-        delegate?.tableValuesDidChange(self)
+        delegate?.tableValuesDidChange(table: self)
     }
     
     func rowTintColorDidChange(row: GraphInputRow) {
-        if let index = rows.indexOf(row) {
-            delegate?.tableRowTintColorDidChange(self, rowIndex: index)
+        if let index = rows.index(of: row) {
+            delegate?.tableRowTintColorDidChange(table: self, rowIndex: index)
         }
     }
 }

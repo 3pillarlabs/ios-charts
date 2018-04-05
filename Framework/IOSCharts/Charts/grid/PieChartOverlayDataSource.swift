@@ -25,23 +25,23 @@ class PieChartOverlayDataSource: NSObject, OverlayDataSource {
         
         var propertiesArray: [ValueProperties] = []
         
-        let center = CGPointMake(CGRectGetWidth(bounds) / 2, CGRectGetHeight(bounds) / 2)
-        let columnRadius:CGFloat = (fmin(bounds.size.height, bounds.size.width)) / 2
+        let center = bounds.center
+        let columnRadius: CGFloat = min(bounds.width, bounds.height) / 2
         let rowRadius:CGFloat = columnRadius - lineWidth * 1.5
         
         var rowInfos: [PieDataSourceInfo] = []
         var columnInfos: [PieDataSourceInfo] = []
-        for (rowIndex, row) in inputTable.rows.enumerate() {
+        for (rowIndex, row) in inputTable.rows.enumerated() {
             if row.values.count > 0 {
-                rowInfos.append(PieDataSourceInfo(value:inputTable.percentOfRowAtIndex(rowIndex), color: row.tintColor, text: row.name))
-                for (columnIndex, _) in inputTable.columnNames.enumerate() {
-                    columnInfos.append(PieDataSourceInfo(value: inputTable.percentOfColumn(columnIndex, rowIndex: rowIndex), color: row.tintColor, text: "\(row.values[columnIndex])"))
+                rowInfos.append(PieDataSourceInfo(value:inputTable.percentOfRowAtIndex(index: rowIndex), color: row.tintColor, text: row.name))
+                for (columnIndex, _) in inputTable.columnNames.enumerated() {
+                    columnInfos.append(PieDataSourceInfo(value: inputTable.percentOfColumn(columnIndex: columnIndex, rowIndex: rowIndex), color: row.tintColor, text: "\(row.values[columnIndex])"))
                 }
             }
         }
-        
-        propertiesArray.appendContentsOf(propertiesForPieInfos(rowInfos, center: center, radius: rowRadius, extern: false))
-        propertiesArray.appendContentsOf(propertiesForPieInfos(columnInfos, center: center, radius: columnRadius, extern: true))
+
+        propertiesArray.append(contentsOf: propertiesForPieInfos(infos: rowInfos, center: center, radius: rowRadius, extern: false))
+        propertiesArray.append(contentsOf: propertiesForPieInfos(infos: columnInfos, center: center, radius: columnRadius, extern: true))
         
         return propertiesArray
     }
@@ -51,10 +51,10 @@ class PieChartOverlayDataSource: NSObject, OverlayDataSource {
     private func propertiesForPieInfos(infos: [PieDataSourceInfo], center: CGPoint, radius: CGFloat, extern: Bool) -> [ValueProperties] {
         var propertiesArray: [ValueProperties] = []
         var startAngle: CGFloat = 0
-        let maxArcAngle = infos.reduce(0, combine: {fmaxf($0, Float($1.value))}) * Float(M_PI * 2)
+        let maxArcAngle = infos.reduce(0, { max($0, $1.value) }) * .pi * 2
         
         for info in infos {
-            let angle = fmin(CGFloat(Double(info.value) * M_PI * 2), CGFloat(maxArcAngle))
+            let angle = fmin(CGFloat(Double(info.value) * .pi * 2), CGFloat(maxArcAngle))
             
             if info.value < 0.01 {
                 startAngle += angle
@@ -68,8 +68,8 @@ class PieChartOverlayDataSource: NSObject, OverlayDataSource {
             let startPoint = CGPoint(x:  labelX, y: labelY )
             
             property.text = info.text
-            property.textAttributes.updateValue(UIColor.blackColor().CGColor, forKey: NSForegroundColorAttributeName)
-            property.pointColor = UIColor.clearColor()
+            property.textAttributes.updateValue(UIColor.black, forKey: .foregroundColor)
+            property.pointColor = UIColor.clear
             property.lineColor = info.color
             if extern {
                 let onTheLeft = center.x - startPoint.x >= 0

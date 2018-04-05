@@ -17,11 +17,11 @@ class PieArcLayer: CALayer {
     @NSManaged var maxArcAngle: CGFloat
     
     var animationDuration: CFTimeInterval = 0.5
-    let arcPadding = CGFloat((M_PI * 2) / 720)
+    let arcPadding = CGFloat.pi / 360
     var extern: Bool?
     var values: [PieArcInfo] = [] {
         didSet {
-            maxArcAngle = values.reduce(0, combine: {CGFloat(fmaxf(Float($0), Float($1.value)))}) * CGFloat(M_PI * 2)
+            maxArcAngle = values.reduce(0, { max($0, $1.value) }) * CGFloat.pi * 2
         }
     }
     var lineWidth: CGFloat = 50
@@ -31,14 +31,14 @@ class PieArcLayer: CALayer {
         self.setNeedsDisplay()
     }
     
-    override class func needsDisplayForKey(key: String) -> Bool {
+    override class func needsDisplay(forKey key: String) -> Bool {
         if key == "maxArcAngle" {
             return true
         }
-        return super.needsDisplayForKey(key)
+        return super.needsDisplay(forKey: key)
     }
     
-    override func actionForKey(event: String) -> CAAction? {
+    override func action(forKey event: String) -> CAAction? {
         if event == "maxArcAngle" {
             let animation = CABasicAnimation(keyPath: event)
             animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
@@ -46,7 +46,7 @@ class PieArcLayer: CALayer {
             animation.fromValue = 0
             return animation
         }
-        return super.actionForKey(event)
+        return super.action(forKey: event)
     }
     
     override func display() {
@@ -55,36 +55,44 @@ class PieArcLayer: CALayer {
         
         var startAngle: CGFloat = 0
         
-        CGContextSetLineWidth(ctx, lineWidth)
-        
-        let center = CGPointMake(CGRectGetWidth(self.bounds) / 2, CGRectGetHeight(self.bounds) / 2)
+        ctx!.setLineWidth(lineWidth)
+
         let radius:CGFloat = (fmin(self.bounds.size.height, self.bounds.size.width)) / 2
         
         for info in values {
-            startAngle = drawArcForInfo(info, ctx: ctx, startAngle: startAngle, center: center, radius: radius)
+            startAngle = drawArcForInfo(info: info, ctx: ctx, startAngle: startAngle, center: self.bounds.center,
+                                        radius: radius)
         }
         
-        self.contents = UIGraphicsGetImageFromCurrentImageContext().CGImage
+        self.contents = UIGraphicsGetImageFromCurrentImageContext()?.cgImage
         UIGraphicsEndImageContext()
     }
     
-    private func drawArcForInfo(info: PieArcInfo, ctx: CGContextRef?, startAngle: CGFloat, center: CGPoint, radius: CGFloat) -> CGFloat {
-        let maxArcAngle = self.presentationLayer()?.maxArcAngle ?? 0
-        let angle = fmin(CGFloat(Double(info.value) * M_PI * 2), maxArcAngle)
+    private func drawArcForInfo(info: PieArcInfo, ctx: CGContext?, startAngle: CGFloat, center: CGPoint, radius: CGFloat) -> CGFloat {
+        let maxArcAngle = self.presentation()?.maxArcAngle ?? 0
+        let angle = fmin(CGFloat(Double(info.value) * .pi * 2), maxArcAngle)
         let padding = fmin(angle, arcPadding)
         let endAngle = startAngle + angle - padding
         
         if extern! {
-            CGContextSetStrokeColorWithColor(ctx, info.color.CGColor)
-            CGContextAddArc(ctx, center.x, center.y, radius - lineWidth/2, startAngle, endAngle, 0)
-            CGContextDrawPath(ctx, .Stroke)
+            ctx!.setStrokeColor(info.color.cgColor)
+
+            ctx?.addArc(center: center, radius: radius - lineWidth/2, startAngle: startAngle, endAngle: endAngle,
+                        clockwise: false)
+            ctx!.drawPath(using: .stroke)
         } else {
-            CGContextSetFillColorWithColor(ctx, info.color.CGColor)
-            CGContextMoveToPoint(ctx, center.x,center.y)
-            CGContextAddArc(ctx, center.x, center.y, radius, startAngle, endAngle, 0)
-            CGContextFillPath(ctx)
+            ctx!.setFillColor(info.color.cgColor)
+            ctx?.move(to: center)
+            ctx?.addArc(center: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: false)
+            ctx?.fillPath()
         }
         
         return endAngle + padding
+    }
+}
+
+extension CGRect {
+    var center: CGPoint {
+        return CGPoint(x: minX + width / 2, y: minY + height / 2)
     }
 }

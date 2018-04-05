@@ -18,8 +18,6 @@
 		86CC59321C9B01F9000D8D4C /* MatrixCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CC59311C9B01F9000D8D4C /* MatrixCollectionViewFlowLayout.swift */; };
 		B55319EA1C7B636600A72D2C /* PieChartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B55319E91C7B636600A72D2C /* PieChartViewController.swift */; };
 		B55319EC1C7B637800A72D2C /* PieChartViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B55319EB1C7B637800A72D2C /* PieChartViewController.xib */; };
-		B56B00521CF83CE80090FD2C /* IOSCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B56B00511CF83CE80090FD2C /* IOSCharts.framework */; };
-		B56B00531CF83CE80090FD2C /* IOSCharts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B56B00511CF83CE80090FD2C /* IOSCharts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B59D86441C9C05A600060266 /* CustomReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59D86421C9C05A600060266 /* CustomReusableView.swift */; };
 		B59D86451C9C05A600060266 /* CustomReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B59D86431C9C05A600060266 /* CustomReusableView.xib */; };
 		B59D86D11C9C451500060266 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B59D86CE1C9C451500060266 /* Crashlytics.framework */; };
@@ -28,7 +26,26 @@
 		B5A221201C9AC36D007BF60A /* CustomCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B5A2211E1C9AC36D007BF60A /* CustomCollectionViewCell.xib */; };
 		C941D0D11C806F31003D2EE8 /* SegmentedStackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C941D0CF1C806F31003D2EE8 /* SegmentedStackViewController.swift */; };
 		C941D0D21C806F31003D2EE8 /* SegmentedStackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C941D0D01C806F31003D2EE8 /* SegmentedStackViewController.xib */; };
+		FFFB118E20764104005A48BD /* IOSCharts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFFB118D207640FA005A48BD /* IOSCharts.framework */; };
+		FFFB118F20764104005A48BD /* IOSCharts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FFFB118D207640FA005A48BD /* IOSCharts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FFFB118C207640FA005A48BD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FFFB1188207640FA005A48BD /* IOSCharts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B53CA56B1C97FA840006ADC4;
+			remoteInfo = IOSCharts;
+		};
+		FFFB119020764104005A48BD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FFFB1188207640FA005A48BD /* IOSCharts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = B53CA56A1C97FA840006ADC4;
+			remoteInfo = IOSCharts;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		B56B00541CF83CE90090FD2C /* Embed Frameworks */ = {
@@ -37,7 +54,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				B56B00531CF83CE80090FD2C /* IOSCharts.framework in Embed Frameworks */,
+				FFFB118F20764104005A48BD /* IOSCharts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -58,7 +75,6 @@
 		86CC59311C9B01F9000D8D4C /* MatrixCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatrixCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		B55319E91C7B636600A72D2C /* PieChartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartViewController.swift; sourceTree = "<group>"; };
 		B55319EB1C7B637800A72D2C /* PieChartViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PieChartViewController.xib; sourceTree = "<group>"; };
-		B56B00511CF83CE80090FD2C /* IOSCharts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = IOSCharts.framework; sourceTree = "<group>"; };
 		B59D86421C9C05A600060266 /* CustomReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomReusableView.swift; sourceTree = "<group>"; };
 		B59D86431C9C05A600060266 /* CustomReusableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomReusableView.xib; sourceTree = "<group>"; };
 		B59D86CE1C9C451500060266 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
@@ -67,6 +83,7 @@
 		B5A2211E1C9AC36D007BF60A /* CustomCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomCollectionViewCell.xib; sourceTree = "<group>"; };
 		C941D0CF1C806F31003D2EE8 /* SegmentedStackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedStackViewController.swift; sourceTree = "<group>"; };
 		C941D0D01C806F31003D2EE8 /* SegmentedStackViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SegmentedStackViewController.xib; sourceTree = "<group>"; };
+		FFFB1188207640FA005A48BD /* IOSCharts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = IOSCharts.xcodeproj; path = ../../Framework/IOSCharts/IOSCharts.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +93,7 @@
 			files = (
 				B59D86D11C9C451500060266 /* Crashlytics.framework in Frameworks */,
 				B59D86D21C9C451500060266 /* Fabric.framework in Frameworks */,
-				B56B00521CF83CE80090FD2C /* IOSCharts.framework in Frameworks */,
+				FFFB118E20764104005A48BD /* IOSCharts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,7 +103,7 @@
 		86CC32C81C6B7C3C00503648 = {
 			isa = PBXGroup;
 			children = (
-				B56B00511CF83CE80090FD2C /* IOSCharts.framework */,
+				FFFB1188207640FA005A48BD /* IOSCharts.xcodeproj */,
 				86CC32D31C6B7C3C00503648 /* ChartsApp */,
 				B59285661C9985AF006A2408 /* Frameworks */,
 				86CC32D21C6B7C3C00503648 /* Products */,
@@ -152,6 +169,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		FFFB1189207640FA005A48BD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FFFB118D207640FA005A48BD /* IOSCharts.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -168,6 +193,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				FFFB119120764104005A48BD /* PBXTargetDependency */,
 			);
 			name = ChartsApp;
 			productName = ChartsApp;
@@ -181,12 +207,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = 3PillarGlobal;
 				TargetAttributes = {
 					86CC32D01C6B7C3C00503648 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = TMQ7PR2UWW;
+						LastSwiftMigration = 0930;
 					};
 				};
 			};
@@ -201,12 +228,28 @@
 			mainGroup = 86CC32C81C6B7C3C00503648;
 			productRefGroup = 86CC32D21C6B7C3C00503648 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = FFFB1189207640FA005A48BD /* Products */;
+					ProjectRef = FFFB1188207640FA005A48BD /* IOSCharts.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				86CC32D01C6B7C3C00503648 /* ChartsApp */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		FFFB118D207640FA005A48BD /* IOSCharts.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = IOSCharts.framework;
+			remoteRef = FFFB118C207640FA005A48BD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		86CC32CF1C6B7C3C00503648 /* Resources */ = {
@@ -262,6 +305,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		FFFB119120764104005A48BD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = IOSCharts;
+			targetProxy = FFFB119020764104005A48BD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		86CC32E01C6B7C3C00503648 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -282,13 +333,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -327,13 +388,23 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -352,6 +423,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -360,6 +432,7 @@
 		86CC32E71C6B7C3C00503648 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -372,12 +445,15 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.3pillarglobal.ChartsApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
 		86CC32E81C6B7C3C00503648 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -390,6 +466,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.3pillarglobal.ChartsApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
