@@ -13,7 +13,7 @@ class PieChartViewController: UIViewController {
     @IBOutlet weak var graphView: PieChartView!
     var inputTable:GraphInputTable?
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.title = "Pie Graph"
     }

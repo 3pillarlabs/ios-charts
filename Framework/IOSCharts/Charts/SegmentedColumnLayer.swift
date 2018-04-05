@@ -31,7 +31,7 @@ class SegmentedColumnLayer: CALayer {
         didSet {
             for info in values {
                 let layer = CALayer()
-                layer.backgroundColor = info.color.CGColor
+                layer.backgroundColor = info.color.cgColor
                 self.addSublayer(layer)
             }
         }
@@ -41,17 +41,19 @@ class SegmentedColumnLayer: CALayer {
     
     override func layoutSublayers() {
         super.layoutSublayers()
-        maxSegmentHeight = round(values.reduce(0, combine: {CGFloat(fmaxf(Float($0), Float($1.value)))}) * self.bounds.size.height)
+
+        let maxHeight = values.reduce(0, { max($0, $1.value)  })
+        maxSegmentHeight = round(maxHeight * self.bounds.size.height)
     }
     
-    override class func needsDisplayForKey(key: String) -> Bool {
+    override class func needsDisplay(forKey key: String) -> Bool {
         if key == "maxSegmentHeight" {
             return true
         }
-        return super.needsDisplayForKey(key)
+        return super.needsDisplay(forKey: key)
     }
     
-    override func actionForKey(event: String) -> CAAction? {
+    override func action(forKey event: String) -> CAAction? {
         if event == "maxSegmentHeight" {
             let animation = CABasicAnimation(keyPath: event)
             animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
@@ -59,20 +61,21 @@ class SegmentedColumnLayer: CALayer {
             animation.fromValue = self.maxSegmentHeight
             return animation
         }
-        return super.actionForKey(event)
+        return super.action(forKey: event)
     }
     
     override func display() {
-        let maxSegmentHeight = self.presentationLayer()?.maxSegmentHeight ?? 0
+        let maxSegmentHeight = self.presentation()?.maxSegmentHeight ?? 0
         
         CATransaction.begin()
         CATransaction.setValue(kCFBooleanTrue, forKey: kCATransactionDisableActions)
         
         var heightSum: CGFloat = 0
         if let sublayers = self.sublayers {
-            for (index, layer) in sublayers.enumerate() {
-                let height = fmin(CGRectGetHeight(self.bounds) * values[index].value, maxSegmentHeight)
-                layer.frame = CGRect(x: 0, y: CGRectGetHeight(self.bounds) - heightSum - height + kSeparatorLineHeight, width: CGRectGetWidth(self.bounds), height: height - kSeparatorLineHeight)
+            for (index, layer) in sublayers.enumerated() {
+                let height = fmin(self.bounds.height * values[index].value, maxSegmentHeight)
+                layer.frame = CGRect(x: 0, y: self.bounds.height - heightSum - height + kSeparatorLineHeight,
+                                     width: self.bounds.width, height: height - kSeparatorLineHeight)
                 heightSum += height
             }
         }

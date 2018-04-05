@@ -13,9 +13,9 @@ public class GraphInputRow: NSObject {
    public var name = ""
     
    /// Set tint color for Row
-   public var tintColor = UIColor.blackColor() {
+   public var tintColor = UIColor.black {
         didSet {
-            delegate?.rowTintColorDidChange(self)
+            delegate?.rowTintColorDidChange(row: self)
         }
     }
     
@@ -23,7 +23,7 @@ public class GraphInputRow: NSObject {
    public var values: [Double] = [] {
         didSet {
             computeMinMax()
-            delegate?.rowValuesDidChange(self)
+            delegate?.rowValuesDidChange(row: self)
         }
     }
     private(set) var min: Double = 0
@@ -47,14 +47,14 @@ public class GraphInputRow: NSObject {
         
         self.name = name
         self.values = values
-        self.tintColor = tintColor ?? UIColor.blackColor()
+        self.tintColor = tintColor ?? UIColor.black
         computeMinMax()
     }
     
     // MARK: - private methods
     
     private func computeMinMax() {
-        var min: Double = DBL_MAX
+        var min: Double = .greatestFiniteMagnitude
         var max: Double = 0
         var total: Double = 0
         

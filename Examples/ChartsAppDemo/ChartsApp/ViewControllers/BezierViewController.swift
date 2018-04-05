@@ -14,7 +14,7 @@ class BezierViewController: UIViewController {
     @IBOutlet weak var graphView: LineGraphView!
     var inputTable:GraphInputTable?
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.title = "Line Graph"
     }
@@ -30,7 +30,7 @@ class BezierViewController: UIViewController {
         graphView.inputTable = inputTable
     }
     
-    @IBAction func curvingValueChanged(sender: UISlider) {
+    @IBAction func curvingValueChanged(_ sender: UISlider) {
         graphView.curving = sender.value
     }
 }

@@ -27,23 +27,24 @@ class RadialGradientLayer: CALayer {
         setNeedsDisplay()
     }
     
-    override func drawInContext(ctx: CGContext) {
+    override func draw(in ctx: CGContext) {
         guard colors.count > 0 && locations.count == colors.count else {
             return
         }
         
-        let radius = fmin(CGRectGetHeight(self.bounds) / 2, CGRectGetWidth(self.bounds) / 2)
-        let center = CGPoint(x: CGRectGetWidth(self.bounds) / 2, y: CGRectGetHeight(self.bounds) / 2)
+        let center = CGPoint(x: self.bounds.width / 2, y: self.bounds.height / 2)
+        let radius = min(center.x, center.y)
         
         // Prepare a context and create a color space
-        CGContextSaveGState(ctx);
+        ctx.saveGState();
         let colorSpace = CGColorSpaceCreateDeviceRGB();
         
         // Create gradient object from our color space, color components and locations
-        let gradient = CGGradientCreateWithColors(colorSpace, colors, locations)
-        
-        // Draw a gradient
-        CGContextDrawRadialGradient(ctx, gradient, center, 0.0, center, radius, .DrawsBeforeStartLocation);
-        CGContextRestoreGState(ctx);
+        if let gradient = CGGradient(colorsSpace: colorSpace, colors: colors as CFArray, locations: locations) {
+            // Draw a gradient
+            ctx.drawRadialGradient(gradient, startCenter: center, startRadius: 0.0, endCenter: center,
+                                   endRadius: radius, options: .drawsBeforeStartLocation)
+        }
+        ctx.restoreGState();
     }
 }

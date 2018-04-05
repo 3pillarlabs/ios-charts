@@ -24,7 +24,7 @@ public class LineGraphView: UIView,GraphInputTableDelegate {
     
     private var controldistanceFactor: CGFloat = 0.5 {
         didSet {
-            updateGraphs(false)
+            updateGraphs(animated: false)
         }
     }
     
@@ -41,7 +41,7 @@ public class LineGraphView: UIView,GraphInputTableDelegate {
             if let inputTable = inputTable {
                 inputTable.delegate = self
                 gridDataSource.inputTable = inputTable
-                tableRowsDidChange(inputTable)
+                tableRowsDidChange(table: inputTable)
             } else {
                 removeLayers()
             }
@@ -83,14 +83,14 @@ public class LineGraphView: UIView,GraphInputTableDelegate {
         graphContainerLayer.frame = bounds
         overlayLayer.frame = graphFrame
         
-        updateGraphs(false)
-        renderer?.render(inputTable?.min ?? Double(0), maxValue: inputTable?.max ?? Double(0))
+        updateGraphs(animated: false)
+        renderer?.render(minValue: inputTable?.min ?? Double(0), maxValue: inputTable?.max ?? Double(0))
     }
     
     // MARK : - Touch Handling
     
-    override public func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        let point = touches.first?.locationInView(self)
+    override public func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let point = touches.first?.location(in: self)
         let graphFrame = UIEdgeInsetsInsetRect(self.bounds, graphInset)
         if graphFrame.contains(point!) {
             overlayLayer.opacity = 1 - overlayLayer.opacity
@@ -100,26 +100,26 @@ public class LineGraphView: UIView,GraphInputTableDelegate {
     // MARK: - GraphInputTableDelegate
     
     public func tableValuesDidChange(table: GraphInputTable) {
-        updateGraphs(true)
-        renderer?.render(inputTable?.min ?? Double(0), maxValue: inputTable?.max ?? Double(0))
+        updateGraphs(animated: true)
+        renderer?.render(minValue: inputTable?.min ?? Double(0), maxValue: inputTable?.max ?? Double(0))
     }
     
     public func tableColumnsDidChange(table: GraphInputTable) {
-        updateGraphs(true)
-        renderer?.render(inputTable?.min ?? Double(0), maxValue: inputTable?.max ?? Double(0))
+        updateGraphs(animated: true)
+        renderer?.render(minValue: inputTable?.min ?? Double(0), maxValue: inputTable?.max ?? Double(0))
     }
     
     public func tableRowsDidChange(table: GraphInputTable) {
         removeLayers()
         
         for row in table.rows {
-            addLayers(row)
+            addLayers(row: row)
         }
-        updateGraphs(true)
+        updateGraphs(animated: true)
     }
     
     public func tableRowTintColorDidChange(table: GraphInputTable, rowIndex: Int) {
-        lineLayers[rowIndex].strokeColor = table.rows[rowIndex].tintColor.CGColor
+        lineLayers[rowIndex].strokeColor = table.rows[rowIndex].tintColor.cgColor
     }
     
     // MARK: - Private methods
@@ -147,16 +147,16 @@ public class LineGraphView: UIView,GraphInputTableDelegate {
     
     private func addLayers(row: GraphInputRow) {
         let backLayer = CAShapeLayer()
-        backLayer.fillColor = row.tintColor.colorWithAlphaComponent(0.6).CGColor
+        backLayer.fillColor = row.tintColor.withAlphaComponent(0.6).cgColor
         
         let gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [UIColor.blackColor().CGColor, UIColor.blackColor().colorWithAlphaComponent(0.3).CGColor, UIColor.clearColor().CGColor]
+        gradientLayer.colors = [UIColor.black.cgColor, UIColor.black.withAlphaComponent(0.3).cgColor, UIColor.clear.cgColor]
         gradientLayer.locations = [0, 0.9, 1]
         backLayer.mask = gradientLayer
         
         let lineLayer = CAShapeLayer()
-        lineLayer.strokeColor = row.tintColor.CGColor
-        lineLayer.fillColor = UIColor.clearColor().CGColor
+        lineLayer.strokeColor = row.tintColor.cgColor
+        lineLayer.fillColor = UIColor.clear.cgColor
         lineLayer.lineCap = kCALineCapRound
         lineLayer.lineJoin = kCALineJoinRound
         lineLayer.lineWidth = 3
@@ -171,8 +171,8 @@ public class LineGraphView: UIView,GraphInputTableDelegate {
     
     private func updateGraphs(animated: Bool) {
         overlayLayer.reloadData(animated: false)
-        for (index, _) in lineLayers.enumerate() {
-            updateGraph(index, animated: animated)
+        for (index, _) in lineLayers.enumerated() {
+            updateGraph(index: index, animated: animated)
         }
     }
     
@@ -191,47 +191,47 @@ public class LineGraphView: UIView,GraphInputTableDelegate {
         }
         
         let bezierPath = UIBezierPath()
-        let stepWidth = CGRectGetWidth(lineLayer.frame) / (CGFloat(count) - 1)
-        let startPoint = CGPoint(x: 0, y: (1 - points[Int(0)]) * CGRectGetHeight(lineLayer.frame))
-        bezierPath.moveToPoint(startPoint)
+        let stepWidth = lineLayer.frame.width / (CGFloat(count) - 1)
+        let startPoint = CGPoint(x: 0, y: (1 - points[Int(0)]) * lineLayer.frame.height)
+        bezierPath.move(to: startPoint)
         
         for i in 0..<count - 1 {
-            let startPoint = CGPoint(x: stepWidth * CGFloat(i), y: (1 - points[Int(i)]) * CGRectGetHeight(lineLayer.frame))
-            let endPoint = CGPoint(x: stepWidth * (CGFloat(i) + 1), y: (1 - points[Int(i+1)]) * CGRectGetHeight(lineLayer.frame))
+            let startPoint = CGPoint(x: stepWidth * CGFloat(i), y: (1 - points[Int(i)]) * lineLayer.frame.height)
+            let endPoint = CGPoint(x: stepWidth * (CGFloat(i) + 1), y: (1 - points[Int(i+1)]) * lineLayer.frame.height)
             let controlPoint1 = CGPoint(x: startPoint.x + stepWidth * controldistanceFactor, y: startPoint.y)
             let controlPoint2 = CGPoint(x: endPoint.x - stepWidth * controldistanceFactor, y: endPoint.y)
-            bezierPath.addCurveToPoint(endPoint, controlPoint1: controlPoint1, controlPoint2: controlPoint2)
+            bezierPath.addCurve(to: endPoint, controlPoint1: controlPoint1, controlPoint2: controlPoint2)
         }
         
-        lineLayer.path = bezierPath.CGPath
+        lineLayer.path = bezierPath.cgPath
         
         if animated {
             let pathAnimation = CABasicAnimation(keyPath: "strokeEnd")
             pathAnimation.duration = animationDuration
             pathAnimation.fromValue = 0
             pathAnimation.toValue = 1
-            lineLayer.addAnimation(pathAnimation, forKey: "strokeEndAnimation")
+            lineLayer.add(pathAnimation, forKey: "strokeEndAnimation")
         }
         
-        bezierPath.addLineToPoint(CGPoint(x: self.bounds.size.width, y: self.bounds.size.height))
-        bezierPath.addLineToPoint(CGPoint(x: 0, y: self.bounds.size.height))
-        bezierPath.addLineToPoint(CGPoint(x: 0, y: points.first! * self.bounds.size.height))
-        bezierPath.closePath()
+        bezierPath.addLine(to: CGPoint(x: self.bounds.size.width, y: self.bounds.size.height))
+        bezierPath.addLine(to: CGPoint(x: 0, y: self.bounds.size.height))
+        bezierPath.addLine(to: CGPoint(x: 0, y: points.first! * self.bounds.size.height))
+        bezierPath.close()
         
-        backLayer.path = bezierPath.copy().CGPath
+        backLayer.path = (bezierPath.copy() as AnyObject).cgPath
         
         if animated {
             let gradientAnimation = CABasicAnimation(keyPath: "locations")
             gradientAnimation.duration = animationDuration
             gradientAnimation.fromValue = [0, 0, 0]
             gradientAnimation.toValue = [0, 0.9, 1]
-            backLayer.mask!.addAnimation(gradientAnimation, forKey: "locations")
+            backLayer.mask!.add(gradientAnimation, forKey: "locations")
         }
     }
     
     func addAxis() {
         var properties:AxisProperties = AxisProperties()
-        properties.lineColor = UIColor.orangeColor().CGColor
+        properties.lineColor = UIColor.orange.cgColor
         properties.lineWidth = 1
         properties.displayGrid = true
         properties.gridLines = 7

@@ -11,9 +11,9 @@ import IOSCharts
 
 class MenuViewController: UIViewController {
     
-    private static let cellId = "MenuViewControllerCellId"
-    private static let headerReuseIdentifier = "ColumnHeader"
-    private let collectionLayout = MatrixCollectionViewFlowLayout()
+    fileprivate static let cellId = "MenuViewControllerCellId"
+    fileprivate static let headerReuseIdentifier = "ColumnHeader"
+    fileprivate let collectionLayout = MatrixCollectionViewFlowLayout()
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -25,22 +25,22 @@ class MenuViewController: UIViewController {
         collectionView.collectionViewLayout = collectionLayout
         
         title = "Graphs"
-        let addColumnButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: #selector(MenuViewController.addColumn))
+        let addColumnButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(MenuViewController.addColumn))
         navigationItem.leftBarButtonItem = addColumnButton
         
-        collectionView.registerClass(CustomCollectionViewCell.self, forCellWithReuseIdentifier: MenuViewController.cellId)
-        collectionView.registerClass(CustomReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: MenuViewController.headerReuseIdentifier)
+        collectionView.register(CustomCollectionViewCell.self, forCellWithReuseIdentifier: MenuViewController.cellId)
+        collectionView.register(CustomReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: MenuViewController.headerReuseIdentifier)
         
         
-        let cellNib: UINib = UINib(nibName: "CustomCollectionViewCell", bundle: NSBundle.mainBundle())
-        collectionView.registerNib(cellNib, forCellWithReuseIdentifier: MenuViewController.cellId)
+        let cellNib: UINib = UINib(nibName: "CustomCollectionViewCell", bundle: Bundle.main)
+        collectionView.register(cellNib, forCellWithReuseIdentifier: MenuViewController.cellId)
         
-        let headerNib: UINib = UINib(nibName: "CustomReusableView", bundle: NSBundle.mainBundle())
-        collectionView.registerNib(headerNib, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: MenuViewController.headerReuseIdentifier)
+        let headerNib: UINib = UINib(nibName: "CustomReusableView", bundle: Bundle.main)
+        collectionView.register(headerNib, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: MenuViewController.headerReuseIdentifier)
         
-        collectionView.registerNib(headerNib, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: MenuViewController.headerReuseIdentifier)
+        collectionView.register(headerNib, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: MenuViewController.headerReuseIdentifier)
         
-        collectionView?.backgroundColor = UIColor.whiteColor()
+        collectionView?.backgroundColor = UIColor.white
         
         collectionLayout.inputTable.rows = [
             GraphInputRow(name: "row 1", tintColor: UIColor(hex: 0x263D8D, a: 1.0)),
@@ -55,17 +55,17 @@ class MenuViewController: UIViewController {
     
     //MARK: Private method
     
-    func addColumn() {
+    @objc func addColumn() {
         let values: [Double] = collectionLayout.inputTable.rows.map {_ in return Double(arc4random_uniform(100))}
-        collectionLayout.inputTable.addColumn("col #\(collectionLayout.inputTable.columnNames.count + 1)", rowValues: values)
+        collectionLayout.inputTable.addColumn(columnName: "col #\(collectionLayout.inputTable.columnNames.count + 1)", rowValues: values)
         
         collectionView.reloadData()
     }
     
     //MARK: Main Action
     
-    @IBAction func viewGraph(sender: UIButton) {
-        guard let myButtonIndex = viewGraphsButtonCollection.indexOf(sender) else {
+    @IBAction func viewGraph(_ sender: UIButton) {
+        guard let myButtonIndex = viewGraphsButtonCollection.index(of: sender) else {
             return
         }
         var viewController: UIViewController?
@@ -95,27 +95,27 @@ class MenuViewController: UIViewController {
 //MARK: UICollectionViewDataSource
 extension MenuViewController : UICollectionViewDataSource {
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
         return collectionLayout.inputTable.rows.count
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collectionLayout.inputTable.columnNames.count
     }
     
-    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         
         switch kind {
         case UICollectionElementKindSectionHeader:
-            let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: MenuViewController.headerReuseIdentifier, forIndexPath: indexPath) as? CustomReusableView
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: MenuViewController.headerReuseIdentifier, for: indexPath) as? CustomReusableView
 
-            headerView?.backgroundColor = UIColor.lightGrayColor()
+            headerView?.backgroundColor = UIColor.lightGray
             headerView?.titleLabel?.text = "\(collectionLayout.inputTable.columnNames[indexPath.row])"
             return headerView!
         case UICollectionElementKindSectionFooter:
-            let headerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: MenuViewController.headerReuseIdentifier, forIndexPath: indexPath) as? CustomReusableView
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: MenuViewController.headerReuseIdentifier, for: indexPath) as? CustomReusableView
             
-            headerView?.backgroundColor = UIColor.lightGrayColor()
+            headerView?.backgroundColor = UIColor.lightGray
             let row:GraphInputRow = collectionLayout.inputTable.rows[indexPath.section]
             headerView?.titleLabel?.text = row.name
             return headerView!
@@ -125,8 +125,8 @@ extension MenuViewController : UICollectionViewDataSource {
         }
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(MenuViewController.cellId, forIndexPath: indexPath) as! CustomCollectionViewCell
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MenuViewController.cellId, for: indexPath) as! CustomCollectionViewCell
         cell.backgroundColor = collectionLayout.inputTable.rows[indexPath.section].tintColor
         let row = collectionLayout.inputTable.rows[indexPath.section]
         cell.titleLabel.text = "\(row.values[indexPath.row])"
