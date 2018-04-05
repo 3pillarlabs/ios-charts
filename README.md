@@ -77,6 +77,6 @@ iOSCharts is released under MIT license. See [LICENSE](LICENSE) for details.
 
 ## About this project
 
-![3Pillar Global] (http://www.3pillarglobal.com/wp-content/themes/base/library/images/logo_3pg.png)
+[![3Pillar Global](https://www.3pillarglobal.com/wp-content/themes/base/library/images/logo_3pg.png)](http://www.3pillarglobal.com/)
 
 **iOSCharts** is developed and maintained by [3Pillar Global](http://www.3pillarglobal.com/).
