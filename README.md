@@ -13,12 +13,53 @@ It is available starting with IOS 8.0 and later and can be used with both Swift 
 
 Link your application against the framework. Add the framework to the list of 'Embedded Binaries' from the project's General tab.
 
+### CocoaPods
+
+- Run Terminal
+
+- Navigate to project folder
+
+- Use command:
+
+```
+pod init
+```
+
+- Add code to podfile
+
+```
+platform :ios, '10.0'
+
+target 'YourProjectName' do
+  use_frameworks!
+    pod 'iOSCharts'
+end
+```
+
+- Run command:
+
+```
+pod install
+```
+
+Remember to open project using workspace
+
 ### Carthage
 
-- Update your Cartfile by adding:
+- Run Terminal
+
+- Navigate to project folder
+
+- Use command in terminal:
+```
+touch cartfile
+```
+
+- Add code to Cartfile:
 
 ```
 github "3pillarlabs/ios-charts"
+
 ```
 
 - Run carthage by using command:
@@ -84,6 +125,8 @@ for (int j = 0; j < numberOfColumns; j++) {
 }					
 
 ```
+
+A demo is available on [demo branch](https://github.com/3pillarlabs/ios-charts/demo)
 
 ## License
 
