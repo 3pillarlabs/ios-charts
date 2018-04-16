@@ -126,7 +126,7 @@ for (int j = 0; j < numberOfColumns; j++) {
 
 ```
 
-A demo is available on [demo branch](https://github.com/3pillarlabs/ios-charts/demo)
+A demo is available on [demo branch](https://github.com/3pillarlabs/ios-charts/tree/demo).
 
 ## License
 
