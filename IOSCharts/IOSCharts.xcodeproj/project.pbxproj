@@ -1,0 +1,427 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B53CA56F1C97FA840006ADC4 /* IOSCharts.h in Headers */ = {isa = PBXBuildFile; fileRef = B53CA56E1C97FA840006ADC4 /* IOSCharts.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		FF2085042084BFEB00ED0B79 /* SegmentedStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2084F02084BFEB00ED0B79 /* SegmentedStackView.swift */; };
+		FF2085052084BFEB00ED0B79 /* RadialGradientLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2084F12084BFEB00ED0B79 /* RadialGradientLayer.swift */; };
+		FF2085062084BFEB00ED0B79 /* LineGraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2084F22084BFEB00ED0B79 /* LineGraphView.swift */; };
+		FF2085072084BFEB00ED0B79 /* GraphInputRowDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2084F42084BFEB00ED0B79 /* GraphInputRowDelegate.swift */; };
+		FF2085082084BFEB00ED0B79 /* GraphInputRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2084F52084BFEB00ED0B79 /* GraphInputRow.swift */; };
+		FF2085092084BFEB00ED0B79 /* GraphInputTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2084F62084BFEB00ED0B79 /* GraphInputTable.swift */; };
+		FF20850A2084BFEB00ED0B79 /* GraphInputTableDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2084F72084BFEB00ED0B79 /* GraphInputTableDelegate.swift */; };
+		FF20850B2084BFEB00ED0B79 /* PieArcLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2084F82084BFEB00ED0B79 /* PieArcLayer.swift */; };
+		FF20850C2084BFEB00ED0B79 /* SegmentedColumnLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2084F92084BFEB00ED0B79 /* SegmentedColumnLayer.swift */; };
+		FF20850D2084BFEB00ED0B79 /* PieChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2084FA2084BFEB00ED0B79 /* PieChartView.swift */; };
+		FF20850E2084BFEB00ED0B79 /* OverlayLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2084FC2084BFEB00ED0B79 /* OverlayLayer.swift */; };
+		FF20850F2084BFEB00ED0B79 /* StackedBarOverlayDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2084FD2084BFEB00ED0B79 /* StackedBarOverlayDataSource.swift */; };
+		FF2085102084BFEB00ED0B79 /* PieChartOverlayDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2084FE2084BFEB00ED0B79 /* PieChartOverlayDataSource.swift */; };
+		FF2085112084BFEB00ED0B79 /* OverlayDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2084FF2084BFEB00ED0B79 /* OverlayDataSource.swift */; };
+		FF2085122084BFEB00ED0B79 /* AxisRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2085002084BFEB00ED0B79 /* AxisRenderer.swift */; };
+		FF2085132084BFEB00ED0B79 /* LineOverlayDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2085012084BFEB00ED0B79 /* LineOverlayDataSource.swift */; };
+		FF2085142084BFEB00ED0B79 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF2085032084BFEB00ED0B79 /* UIColor+Extension.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		B53CA56B1C97FA840006ADC4 /* IOSCharts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IOSCharts.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B53CA56E1C97FA840006ADC4 /* IOSCharts.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IOSCharts.h; sourceTree = "<group>"; };
+		B53CA5701C97FA840006ADC4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FF2084F02084BFEB00ED0B79 /* SegmentedStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedStackView.swift; sourceTree = "<group>"; };
+		FF2084F12084BFEB00ED0B79 /* RadialGradientLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadialGradientLayer.swift; sourceTree = "<group>"; };
+		FF2084F22084BFEB00ED0B79 /* LineGraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineGraphView.swift; sourceTree = "<group>"; };
+		FF2084F42084BFEB00ED0B79 /* GraphInputRowDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphInputRowDelegate.swift; sourceTree = "<group>"; };
+		FF2084F52084BFEB00ED0B79 /* GraphInputRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphInputRow.swift; sourceTree = "<group>"; };
+		FF2084F62084BFEB00ED0B79 /* GraphInputTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphInputTable.swift; sourceTree = "<group>"; };
+		FF2084F72084BFEB00ED0B79 /* GraphInputTableDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphInputTableDelegate.swift; sourceTree = "<group>"; };
+		FF2084F82084BFEB00ED0B79 /* PieArcLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieArcLayer.swift; sourceTree = "<group>"; };
+		FF2084F92084BFEB00ED0B79 /* SegmentedColumnLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentedColumnLayer.swift; sourceTree = "<group>"; };
+		FF2084FA2084BFEB00ED0B79 /* PieChartView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartView.swift; sourceTree = "<group>"; };
+		FF2084FC2084BFEB00ED0B79 /* OverlayLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayLayer.swift; sourceTree = "<group>"; };
+		FF2084FD2084BFEB00ED0B79 /* StackedBarOverlayDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackedBarOverlayDataSource.swift; sourceTree = "<group>"; };
+		FF2084FE2084BFEB00ED0B79 /* PieChartOverlayDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PieChartOverlayDataSource.swift; sourceTree = "<group>"; };
+		FF2084FF2084BFEB00ED0B79 /* OverlayDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayDataSource.swift; sourceTree = "<group>"; };
+		FF2085002084BFEB00ED0B79 /* AxisRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AxisRenderer.swift; sourceTree = "<group>"; };
+		FF2085012084BFEB00ED0B79 /* LineOverlayDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineOverlayDataSource.swift; sourceTree = "<group>"; };
+		FF2085032084BFEB00ED0B79 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B53CA5671C97FA840006ADC4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B53CA5611C97FA840006ADC4 = {
+			isa = PBXGroup;
+			children = (
+				B53CA56D1C97FA840006ADC4 /* IOSCharts */,
+				B53CA56C1C97FA840006ADC4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B53CA56C1C97FA840006ADC4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B53CA56B1C97FA840006ADC4 /* IOSCharts.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B53CA56D1C97FA840006ADC4 /* IOSCharts */ = {
+			isa = PBXGroup;
+			children = (
+				FF2084EF2084BFEB00ED0B79 /* Charts */,
+				FF2085022084BFEB00ED0B79 /* Extensions */,
+				B53CA56E1C97FA840006ADC4 /* IOSCharts.h */,
+				B53CA5701C97FA840006ADC4 /* Info.plist */,
+			);
+			path = IOSCharts;
+			sourceTree = "<group>";
+		};
+		FF2084EF2084BFEB00ED0B79 /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				FF2084F02084BFEB00ED0B79 /* SegmentedStackView.swift */,
+				FF2084F12084BFEB00ED0B79 /* RadialGradientLayer.swift */,
+				FF2084F22084BFEB00ED0B79 /* LineGraphView.swift */,
+				FF2084F32084BFEB00ED0B79 /* model */,
+				FF2084F82084BFEB00ED0B79 /* PieArcLayer.swift */,
+				FF2084F92084BFEB00ED0B79 /* SegmentedColumnLayer.swift */,
+				FF2084FA2084BFEB00ED0B79 /* PieChartView.swift */,
+				FF2084FB2084BFEB00ED0B79 /* grid */,
+			);
+			name = Charts;
+			path = ../../Sources/Charts;
+			sourceTree = "<group>";
+		};
+		FF2084F32084BFEB00ED0B79 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				FF2084F42084BFEB00ED0B79 /* GraphInputRowDelegate.swift */,
+				FF2084F52084BFEB00ED0B79 /* GraphInputRow.swift */,
+				FF2084F62084BFEB00ED0B79 /* GraphInputTable.swift */,
+				FF2084F72084BFEB00ED0B79 /* GraphInputTableDelegate.swift */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		FF2084FB2084BFEB00ED0B79 /* grid */ = {
+			isa = PBXGroup;
+			children = (
+				FF2084FC2084BFEB00ED0B79 /* OverlayLayer.swift */,
+				FF2084FD2084BFEB00ED0B79 /* StackedBarOverlayDataSource.swift */,
+				FF2084FE2084BFEB00ED0B79 /* PieChartOverlayDataSource.swift */,
+				FF2084FF2084BFEB00ED0B79 /* OverlayDataSource.swift */,
+				FF2085002084BFEB00ED0B79 /* AxisRenderer.swift */,
+				FF2085012084BFEB00ED0B79 /* LineOverlayDataSource.swift */,
+			);
+			path = grid;
+			sourceTree = "<group>";
+		};
+		FF2085022084BFEB00ED0B79 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				FF2085032084BFEB00ED0B79 /* UIColor+Extension.swift */,
+			);
+			name = Extensions;
+			path = ../../Sources/Extensions;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		B53CA5681C97FA840006ADC4 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B53CA56F1C97FA840006ADC4 /* IOSCharts.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		B53CA56A1C97FA840006ADC4 /* IOSCharts */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B53CA5731C97FA840006ADC4 /* Build configuration list for PBXNativeTarget "IOSCharts" */;
+			buildPhases = (
+				B53CA5661C97FA840006ADC4 /* Sources */,
+				B53CA5671C97FA840006ADC4 /* Frameworks */,
+				B53CA5681C97FA840006ADC4 /* Headers */,
+				B53CA5691C97FA840006ADC4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = IOSCharts;
+			productName = IOSCharts;
+			productReference = B53CA56B1C97FA840006ADC4 /* IOSCharts.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B53CA5621C97FA840006ADC4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = "3Pillar Global";
+				TargetAttributes = {
+					B53CA56A1C97FA840006ADC4 = {
+						CreatedOnToolsVersion = 7.2.1;
+						LastSwiftMigration = 0930;
+					};
+				};
+			};
+			buildConfigurationList = B53CA5651C97FA840006ADC4 /* Build configuration list for PBXProject "IOSCharts" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = B53CA5611C97FA840006ADC4;
+			productRefGroup = B53CA56C1C97FA840006ADC4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B53CA56A1C97FA840006ADC4 /* IOSCharts */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B53CA5691C97FA840006ADC4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B53CA5661C97FA840006ADC4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FF2085052084BFEB00ED0B79 /* RadialGradientLayer.swift in Sources */,
+				FF2085112084BFEB00ED0B79 /* OverlayDataSource.swift in Sources */,
+				FF2085042084BFEB00ED0B79 /* SegmentedStackView.swift in Sources */,
+				FF20850A2084BFEB00ED0B79 /* GraphInputTableDelegate.swift in Sources */,
+				FF2085142084BFEB00ED0B79 /* UIColor+Extension.swift in Sources */,
+				FF20850E2084BFEB00ED0B79 /* OverlayLayer.swift in Sources */,
+				FF2085122084BFEB00ED0B79 /* AxisRenderer.swift in Sources */,
+				FF2085062084BFEB00ED0B79 /* LineGraphView.swift in Sources */,
+				FF2085082084BFEB00ED0B79 /* GraphInputRow.swift in Sources */,
+				FF20850C2084BFEB00ED0B79 /* SegmentedColumnLayer.swift in Sources */,
+				FF20850F2084BFEB00ED0B79 /* StackedBarOverlayDataSource.swift in Sources */,
+				FF2085102084BFEB00ED0B79 /* PieChartOverlayDataSource.swift in Sources */,
+				FF2085132084BFEB00ED0B79 /* LineOverlayDataSource.swift in Sources */,
+				FF20850D2084BFEB00ED0B79 /* PieChartView.swift in Sources */,
+				FF20850B2084BFEB00ED0B79 /* PieArcLayer.swift in Sources */,
+				FF2085092084BFEB00ED0B79 /* GraphInputTable.swift in Sources */,
+				FF2085072084BFEB00ED0B79 /* GraphInputRowDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		B53CA5711C97FA840006ADC4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B53CA5721C97FA840006ADC4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		B53CA5741C97FA840006ADC4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BITCODE_GENERATION_MODE = bitcode;
+				CODE_SIGN_IDENTITY = "";
+				DEAD_CODE_STRIPPING = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = IOSCharts/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_CFLAGS = "-fembed-bitcode";
+				PRODUCT_BUNDLE_IDENTIFIER = "-PG.IOSCharts";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRIP_INSTALLED_PRODUCT = YES;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		B53CA5751C97FA840006ADC4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BITCODE_GENERATION_MODE = bitcode;
+				CODE_SIGN_IDENTITY = "";
+				DEAD_CODE_STRIPPING = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = IOSCharts/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_CFLAGS = "-fembed-bitcode";
+				PRODUCT_BUNDLE_IDENTIFIER = "-PG.IOSCharts";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				STRIP_INSTALLED_PRODUCT = YES;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B53CA5651C97FA840006ADC4 /* Build configuration list for PBXProject "IOSCharts" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B53CA5711C97FA840006ADC4 /* Debug */,
+				B53CA5721C97FA840006ADC4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B53CA5731C97FA840006ADC4 /* Build configuration list for PBXNativeTarget "IOSCharts" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B53CA5741C97FA840006ADC4 /* Debug */,
+				B53CA5751C97FA840006ADC4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B53CA5621C97FA840006ADC4 /* Project object */;
+}
