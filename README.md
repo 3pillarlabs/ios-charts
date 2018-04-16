@@ -9,6 +9,15 @@ It is available starting with IOS 8.0 and later and can be used with both Swift 
 
 ![](screenshots/demoIOSCharts.gif)
 
+## Demo run
+
+To run demo IOSCharts is needed. To fetch it, run Carthage command in terminal:
+
+```
+cd {PROJECT_DIR}
+carthage update
+```
+
 ## Installation
 
 Link your application against the framework. Add the framework to the list of 'Embedded Binaries' from the project's General tab.
