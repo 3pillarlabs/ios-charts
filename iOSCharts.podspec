@@ -8,5 +8,5 @@ Pod::Spec.new do |s|
   s.author       = "3Pillar Global"
   s.platform     = :ios, "8.0"
   s.source       = { :git => "https://github.com/3pillarlabs/ios-charts.git", :tag => "#{s.version}" }
-  s.source_files = "Sources/*"
+  s.source_files = "Sources/**/*.{h,m,swift}"
 end
